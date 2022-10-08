@@ -1,0 +1,82 @@
+@import 'src/styles/functions.scss';
+
+.button {
+  display: inline-flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: capitalize;
+  line-height: space(6);
+  color: #f5dde0;
+  background-color: #7f1734;
+  border: none;
+  border-radius: space(1);
+  height: space(11);
+  cursor: pointer;
+
+  &:active {
+    -webkit-animation: bounce 0.4s infinite alternate;
+    -moz-animation: bounce 0.4s infinite alternate;
+    animation: bounce 0.4s infinite alternate;
+  }
+
+  img {
+    width: space(6);
+    height: space(6);
+  }
+
+  &.is-submit-btn {
+    width: space(10);
+    outline: none;
+    font-size: 21px;
+  }
+
+  &.clear-all-btn {
+    max-width: 30%;
+    width: 100%;
+  }
+
+  &.is-remove-btn {
+    position: absolute;
+    height: 100%;
+    width: space(14);
+    border-radius: 0;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: #dc143c;
+      }
+    }
+  }
+
+  @-webkit-keyframes bounce {
+    to {
+      -webkit-transform: scale(1.5);
+    }
+  }
+  @-moz-keyframes bounce {
+    to {
+      -moz-transform: scale(1.5);
+    }
+  }
+  @keyframes bounce {
+    to {
+      transform: scale(1.5);
+    }
+  }
+
+  @media (hover: hover) {
+    transition: background-color 200ms, color 200ms, border 200ms;
+
+    &:hover {
+      background-color: #cd5c5c;
+      border: none;
+    }
+  }
+}
