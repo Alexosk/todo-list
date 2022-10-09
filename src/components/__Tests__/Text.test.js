@@ -1,11 +1,13 @@
 import React from 'react';
 
 import { render } from '@testing-library/react';
-import { App } from './App';
+import { Text } from '../Text.js';
 
-describe('App', () => {
+const testText = 'Test Label';
+
+describe('Text', () => {
   it('Should render', () => {
-    const renderContent = <App />;
+    const renderContent = <Text children={testText} />;
     const view = render(renderContent);
     expect(view).toMatchSnapshot();
   });

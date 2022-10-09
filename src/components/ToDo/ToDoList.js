@@ -1,6 +1,6 @@
 import React from 'react';
 import { deleteTodo } from '../../Endpoints/Endpoints';
-import ToDoItem from './ToDoItem';
+import { ToDoItem } from './ToDoItem';
 import { updateTodo } from '../../Endpoints/Endpoints';
 import { findTodoItem } from '../../utils/helpers';
 
@@ -27,18 +27,13 @@ const ToDoList = ({ todos, onTodoDeleteStateUpdate, onTodoUpdateStateUpdate }) =
   return (
     <div className="todo-list">
       {todos &&
-        todos.map((todo) => {
+        todos.map((todo, i) => {
           return (
-            <ToDoItem
-              key={todo._id}
-              todo={todo}
-              handleRemoveItem={handleRemoveItem}
-              handleUpdateItem={handleUpdateItem}
-            />
+            <ToDoItem key={i} todo={todo} handleRemoveItem={handleRemoveItem} handleUpdateItem={handleUpdateItem} />
           );
         })}
     </div>
   );
 };
 
-export default ToDoList;
+export { ToDoList };

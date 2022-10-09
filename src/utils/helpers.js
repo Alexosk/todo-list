@@ -1,4 +1,11 @@
-export const findTodoItem = (id, arr) => arr.find((item) => (item._id === id ? item : null));
+export const findTodoItem = (id, arr) => {
+  const foundItem = arr.find((item) => item._id === id);
+  return foundItem === undefined ? null : foundItem;
+};
+
+export const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
 
 export const detectBrowser = () => {
   let isMobile = '';

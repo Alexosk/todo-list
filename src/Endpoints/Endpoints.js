@@ -1,11 +1,11 @@
-const crudId = '4244075dd321462f953012a270bedb7f'; // Add yor CRUD id here from www.crudcrud.com
+const crudId = '41331aa6814c48c6a733b9fee324a569'; // Add yor CRUD id here from www.crudcrud.com
 const url = `https://crudcrud.com/api/${crudId}/todos`;
 
 export const getTodos = () => {
   return fetch(url)
     .then((response) => response.json())
     .then((data) => data)
-    .catch((err) => console.log(err.message));
+    .catch((err) => console.log('Error: Get Todos: Switch to a new CrudId', err.message));
 };
 
 export const createTodo = (task) => {
@@ -20,7 +20,8 @@ export const createTodo = (task) => {
     }),
   })
     .then((response) => response.json())
-    .then((data) => data);
+    .then((data) => data)
+    .catch((err) => console.log('Error: Create Todo: Switch to a new CrudId', err.message));
 };
 
 export const updateTodo = (todoItem) => {
@@ -34,12 +35,16 @@ export const updateTodo = (todoItem) => {
       task: todoItem.task,
       done: todoItem.done,
     }),
-  }).then(() => todoItem);
+  })
+    .then(() => todoItem)
+    .catch((err) => console.log('Error: Update Todo: Switch to a new CrudId', err.message));
 };
 
 export const deleteTodo = (todoItem) => {
   const id = todoItem._id;
   return fetch(`${url}/${id}`, {
     method: 'DELETE',
-  }).then(() => todoItem);
+  })
+    .then(() => todoItem)
+    .catch((err) => console.log('Error: Delete Todo: Switch to a new CrudId', err.message));
 };

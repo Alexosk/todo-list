@@ -10,4 +10,4 @@ const Button = ({ img, label, onClick, className = '' }) => {
   );
 };
 
-export default Button;
+export { Button };

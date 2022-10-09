@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { ToDoList } from './components/ToDo';
-import TextInput from './components/TextInput/TextInput';
+import { TextInput } from './components/TextInput/TextInput';
 import { Button } from './components/Button';
 import { Text } from './components/Text.js';
 import { getTodos, createTodo, deleteTodo } from './Endpoints/Endpoints';
-import { detectBrowser } from './utils/helpers';
 
 import './App.scss';
 
-const App = () => {
+export const App = () => {
   const [todos, setTodos] = useState([]);
-  const isMobile = detectBrowser() === 'is-mobile';
+  const [userInput, setUserInput] = useState('');
 
   useEffect(() => {
     getTodos().then((data) => setTodos(data));
@@ -48,11 +47,39 @@ const App = () => {
     });
   };
 
+  const handleChange = (e) => {
+    setUserInput(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (userInput.length <= 0) return;
+    addTask(userInput);
+
+    setUserInput('');
+  };
+
+  const handleSubmitKeydown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSubmit(e);
+      setUserInput('');
+    }
+  };
+
   return (
-    <div className={`App ${isMobile ? 'is-mobile' : ''}`}>
+    <div className="App">
       <div className="app-container">
         <Header title="todo app" />
-        <TextInput addTask={addTask} />
+        <div className="input-container">
+          <TextInput
+            userInput={userInput}
+            onKeyDown={handleSubmitKeydown}
+            handleChange={handleChange}
+            placeholder="Enter todo..."
+          />
+          <Button onClick={handleSubmit} label="+" className="is-submit-btn" />
+        </div>
         {todos && todos.length > 0 ? (
           <>
             <ToDoList
@@ -71,5 +98,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;

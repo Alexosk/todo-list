@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '../Button';
 import Trash from '../../img/trash.png';
-import { detectBrowser } from '../../utils/helpers';
+import { detectBrowser, capitalizeFirstLetter } from '../../utils/helpers';
 
 import './toDo.scss';
 
@@ -12,7 +12,7 @@ const ToDoItem = ({ todo, handleRemoveItem, handleUpdateItem }) => {
   return (
     <div className="todo-item">
       <p onClick={() => handleUpdateItem(todoId)} className={todo.done ? 'is-strike-through' : ''}>
-        {todo.task}
+        {capitalizeFirstLetter(todo.task)}
       </p>
       <div className={`action-button ${isMobile ? 'is-mobile' : ''}`}>
         <Button onClick={() => handleRemoveItem(todoId)} img={Trash} label="remove" className="is-remove-btn" />
@@ -21,4 +21,4 @@ const ToDoItem = ({ todo, handleRemoveItem, handleUpdateItem }) => {
   );
 };
 
-export default ToDoItem;
+export { ToDoItem };

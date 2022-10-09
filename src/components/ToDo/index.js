@@ -1,4 +1,2 @@
-import ToDoList from './ToDoList';
-import ToDoItem from './ToDoItem';
-
-export { ToDoList, ToDoItem };
+export { ToDoList } from './ToDoList';
+export { ToDoItem } from './ToDoItem';

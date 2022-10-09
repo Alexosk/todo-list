@@ -1,29 +1,18 @@
-import React, { useState } from 'react';
-import { Button } from '../Button';
+import React from 'react';
 
 import './textInput.scss';
 
-const TextInput = ({ addTask }) => {
-  const [userInput, setUserInput] = useState('');
-
-  const handleChange = (e) => {
-    setUserInput(e.currentTarget.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (userInput.length <= 0) return;
-    addTask(userInput);
-
-    setUserInput('');
-  };
-
+const TextInput = ({ userInput, handleChange, placeholder, onKeyDown }) => {
   return (
-    <form className="input-container">
-      <input className="text-input" value={userInput} type="text" onChange={handleChange} placeholder="Enter todo..." />
-      <Button onClick={handleSubmit} label="+" className="is-submit-btn" />
-    </form>
+    <input
+      className="text-input"
+      value={userInput}
+      type="text"
+      onChange={handleChange}
+      onKeyDown={onKeyDown}
+      placeholder={placeholder}
+    />
   );
 };
 
-export default TextInput;
+export { TextInput };

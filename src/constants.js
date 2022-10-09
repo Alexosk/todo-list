@@ -1,31 +1,31 @@
-export const dummyData = [
+export const dummyArray = [
   {
-    id: 1,
-    task: 'Give dog a bath',
-    done: true,
+    _id: 1,
+    task: 'Clean apartment',
+    done: false,
   },
   {
-    id: 2,
+    _id: 2,
     task: 'Do laundry',
     done: true,
   },
   {
-    id: 3,
+    _id: 3,
     task: 'Vacuum floor',
     done: false,
   },
   {
-    id: 4,
+    _id: 4,
     task: 'Feed cat',
     done: true,
   },
   {
-    id: 5,
+    _id: 5,
     task: 'Change light bulbs',
     done: false,
   },
   {
-    id: 6,
+    _id: 6,
     task: 'Go to Store',
     done: true,
   },
